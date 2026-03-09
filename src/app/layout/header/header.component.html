@@ -1,0 +1,18 @@
+<div class="logo"></div>
+<ng-container *ngFor="let item of menuList">
+  <a nz-dropdown [nzDropdownMenu]="menu" *ngIf="item.list else noSubTemplate">
+    {{ item.label }}
+  </a>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+      <li nz-menu-item *ngFor="let subItem of item.list">{{subItem.label}}</li>
+    </ul>
+  </nz-dropdown-menu>
+
+  <ng-template #noSubTemplate>
+    <a>
+      {{ item.label }}
+    </a>
+  </ng-template>
+
+</ng-container>
